@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rosario:wght@300&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <!-- <script src="https://kit.fontawesome.com/a81368914c.js"></script> -->
+    <title>Simple Shopping App</title>
+</head>
+<body>
+  
+  <div class="box">
+
+    <!--the first slide-->
+
+   <div class="desktop-1">
+        <h1>Kindly provide your details to continue</h1>
+          <div class="container">
+          <form>
+            <div class="input_div">
+              <input class="input" type="text" id="name" placeholder="Fullname">
+            </div>
+            <div class="input_div">
+              <input class="input" id="email" type="email" placeholder="Email Address">
+            </div>
+            <div class="input_div">
+              <input class="input" id="address" type="text" placeholder="Address">
+            </div>
+
+            <div class="button">
+              <button id = "entry">Continue</button>
+            </div>
+          </form>
+          </div>
+    </div>
+
+    <!--the second slide-->
+
+    <div class="desktop-2">
+      <h1>Select Product Below and add to Cart</h1>
+
+      <div id="cart">
+        <div id="leftcart">
+          <img src="Rectangle 8.png" alt="leather shoe" style="border-radius: 2px; width: 157px;">
+          <div id="cartmessage"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">Elegant Studded Shoe</span></div> <br>
+          <div id="cartmessage1"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">#10, 000</span></div>
+          <div id="addToCart"><button id="entry1">Add to Cart</button></div>
+        </div>
+
+        <div id="middlecart">
+          <img src="Rectangle 8 (1).png" alt="sunglasses" style="border-radius: 2px; width: 158px;">
+          <div id="cartmessage"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">Beautiful Sunglasses</span></div> <br>
+          <div id="cartmessage1"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">#10, 000</span></div>
+          <div id="addToCart"><button id="entry1">Add to Cart</button></div>
+        </div>
+      
+        <div id="rightcart">
+          <img src="Rectangle 8 (2).png" alt="facecap" style="border-radius: 2px; width: 158px;">
+          <div id="cartmessage"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">Nike Baseball Cap</span></div> <br>
+          <div id="cartmessage1"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">#10, 000</span></div>
+          <div id="addToCart"><button id="entry1">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="container-1">
+       <div class="mycart-items"><span style="float: left; margin-top: 10px; margin-left: 30px; font-family: 'Rosario', sans-serif; font-size: 21px; letter-spacing: 0.2rem; line-height: 15px;">My Cart</span> <span style="float: right;  margin-top: 10px; margin-right: 30px; font-family: 'Rosario', sans-serif; font-size: 21px; letter-spacing: 0.2rem; line-height: 15px;">Item(s)</span></div> 
+       <div><hr style="border: 1px solid rgba(0, 0, 0, 0.09); margin: 40px auto; transform: rotate(0.1deg); width: 95%;"></div>
+       <div><span style="font-family: 'Rosario', sans-serif; font-size: 16px; font-weight: 600; float: right; letter-spacing: 0.2rem; line-height: 15px; margin-top: 150px; margin-right: 160px;">Total Amount </span></div>
+       <div id="complete"><button id="entry2">Complete</button></div>
+      </div>
+      <div>
+        <table id="display" align="left">
+          <tr>
+          <thead>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th></th>
+          </thead>
+          
+          <tbody></tbody>
+        </tr>
+       </table>
+      </div>
+    </div>
+
+
+
+  
+
+    <!--the third slide-->
+
+    <div class="desktop-3">
+  
+            <div class="input_div">
+              <h2>Thank you Oscar (o.ekeyekwu@gems-consult.com) !!!</h2>
+              <p>Order recieved and will be shipped to 2D Obasa, Ikeja, Lagos.</p>
+            </div>
+
+            <div class="button">
+              <button id = "previous" onclick="previousSlide()">Back to Home page</button>
+            </div>
+    </div>
+
+
+
+
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>

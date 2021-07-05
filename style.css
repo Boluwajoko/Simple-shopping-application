@@ -1,0 +1,320 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    background-color: #E5E5E5;
+    position: relative;
+    
+  }
+
+.desktop-1 {
+    background-color: #ffffff;
+    position: relative;
+    width: 1200px;
+    height: 800px;
+    display: flex;
+    margin: 10% auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+.desktop-2 {
+    background-color: #ffffff;
+    position: relative;
+    width: 1200px;
+    height: 800px;
+    display: flex;
+    top: 200px;
+    margin: 10% auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+.desktop-3 {
+    background-color: #ffffff;
+    position: relative;
+    width: 1200px;
+    height: 800px;
+    display: flex;
+    top: 200px;
+    margin: 10% auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+h1 {
+    position: absolute;
+    /* width: 573px;
+    height: 29px; */
+    /* left: 410px; */
+    top: 132px;
+    font-family: 'Rosario', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+    letter-spacing: 0.2rem;
+    text-align: center;
+    color: #000000;
+}
+
+h2 {
+  position: absolute;
+    /* width: 573px;
+    height: 29px; */
+    /* left: 410px; */
+  top: 320px;
+  font-family: 'Rosario', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 29px;
+  /* identical to box height */
+  letter-spacing: 0.2rem;
+  text-align: center;
+  color: #000000;
+}
+
+p {
+  position: absolute;
+    /* width: 573px;
+    height: 29px; */
+    /* left: 410px; */
+    top: 360px;
+    font-family: 'Rosario', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 29px;
+    /* identical to box height */
+    letter-spacing: 0.2rem;
+    text-align: center;
+    color: #000000;
+}
+
+.container {
+    border: 2px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 580px;
+    height: 453px;
+    align-self: center;
+    top: 195px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-1 {
+  border: 2px solid black;
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  width: 980px;
+  height: 323px;
+  align-self: center;
+  top: 435px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+#leftcart {
+  border: 2px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 160px;
+    height: 190px;
+    left: 324px;
+    top: 195px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#middlecart {
+  border: 2px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 160px;
+    height: 190px;
+    left: 530px;
+    top: 195px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#rightcart {
+  border: 2px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 160px;
+    height: 190px;
+    left: 734px;
+    top: 195px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.input_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 2.4rem auto;
+  }
+  
+   .input_div .input {
+    padding: 0.5rem 1rem;
+    height: 50px;
+    outline: none;
+    background-color: #fff;
+    width: 350px;
+    font-size: 1.15rem;
+    margin: 0.25rem;
+    border-radius: 10px;
+    font-family: 'Rosario', sans-serif;
+    border: 1px solid #000000;
+  }  
+  
+  .button {
+    margin: 8rem auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  #addToCart {
+    margin: 7.75rem auto;
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  #entry {
+    height: 58px;
+    outline: none;
+    background-color: #111010;
+    color: #fff;
+    height: 40px;
+    width: 200px;
+    font-family:'Rosario', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.2rem;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    cursor: pointer;
+  }
+
+  #entry1 {
+    height: 26px;
+    outline: none;
+    background-color: #111010;
+    color: #fff;
+    width: 90px;
+    font-family:'Rosario', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.2rem;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 10px 10px;
+    border: 1px solid #000000;
+    cursor: pointer;
+  }
+
+  
+  #complete {
+    margin-top: 13.2rem;
+    margin-left: 25.65rem;
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  #entry2 {
+    height: 36px;
+    outline: none;
+    background-color: #111010;
+    color: #fff;
+    width: 100px;
+    /* margin-top: 165px; */
+    /* margin-left: 536px; */
+    /* float: right; */
+    font-family:'Rosario', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.2rem;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: 1px solid #000000;
+    cursor: pointer;
+  }
+
+  #previous {
+    height: 50px;
+    outline: none;
+    background-color: #111010;
+    color: #fff;
+    width: 330px;
+    font-family:'Rosario', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    cursor: pointer;
+    margin-bottom: 150px;
+  }
+
+  table {
+    /* padding-top: 20%; */
+    /* border-collapse: collapse; */
+    border-collapse: separate;
+    border-spacing: 230px 120px;
+    /* width: 95%; */
+    /* margin: 500px auto; */
+    
+    color: black;
+    margin-top: 340px;
+  }
+  
+  table, th, td {
+    /* border: 1px solid black; */
+    
+    border-left: none;
+    border-right: none;
+    
+  }
+  
+  th {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height */
+
+    letter-spacing: 0.2em;
+    font-family: 'Rosario', sans-serif;
+  }
+  
+  td {
+    font-size: 12px;
+    color: black;
+    font-weight: 300;
+    font-family: 'Rosario', sans-serif;
+  }
