@@ -30,7 +30,7 @@ body {
     height: 800px;
     display: flex;
     top: 200px;
-    margin: 10% auto;
+    margin: 0% auto;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -43,7 +43,7 @@ body {
     height: 800px;
     display: flex;
     top: 200px;
-    margin: 10% auto;
+    margin: 23% auto;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -163,12 +163,13 @@ p {
 
 #leathershoe {
   border-radius: 2px; 
-  width: 157px;
+  width: 156px;
 }
 
 #shoetxt {
   font-family: 'Rosario', sans-serif; 
   font-size: 11px; 
+  padding-left: 5px;
   float: left; 
   letter-spacing: 0.1rem; 
   line-height: 15px;
@@ -177,6 +178,7 @@ p {
 #price1 {
   font-family: 'Rosario', sans-serif; 
   font-size: 11px; 
+  padding-left: 5px;
   float: left; 
   letter-spacing: 0.1rem; 
   line-height: 15px;
@@ -184,13 +186,14 @@ p {
 
 #sunglasses {
   border-radius: 2px; 
-  width: 158px;
+  width: 157px;
 }
 
 #sunglassestxt {
   font-family: 'Rosario', sans-serif; 
   font-size: 11px; 
   float: left; 
+  padding-left: 5px;
   letter-spacing: 0.1rem; 
   line-height: 15px;
 }
@@ -198,6 +201,7 @@ p {
 #price2 {
   font-family: 'Rosario', sans-serif; 
   font-size: 11px; 
+  padding-left: 5px;
   float: left; 
   letter-spacing: 0.1rem; 
   line-height: 15px;
@@ -205,12 +209,13 @@ p {
 
 #facecap {
   border-radius: 2px; 
-  width: 158px;
+  width: 157px;
 }
 
 #captxt {
   font-family: 'Rosario', sans-serif; 
   font-size: 11px; 
+  padding-left: 5px;
   float: left; 
   letter-spacing: 0.1rem; 
   line-height: 15px;
@@ -219,6 +224,7 @@ p {
 #price3 {
   font-family: 'Rosario', sans-serif; 
   font-size: 11px; 
+  padding-left: 5px;
   float: left; 
   letter-spacing: 0.1rem; 
   line-height: 15px;
