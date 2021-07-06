@@ -46,35 +46,35 @@
 
       <div id="cart">
         <div id="leftcart">
-          <img src="Rectangle 8.png" alt="leather shoe" style="border-radius: 2px; width: 157px;">
-          <div id="cartmessage"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">Elegant Studded Shoe</span></div> <br>
-          <div id="cartmessage1"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">#10, 000</span></div>
+          <img id="leathershoe" src="Rectangle 8.png" alt="leather shoe">
+          <div id="cartmessage"><span id="shoetxt">Elegant Studded Shoe</span></div> <br>
+          <div id="cartmessage1"><span id="price1">#10, 000</span></div>
           <div id="addToCart"><button id="entry1">Add to Cart</button></div>
         </div>
 
         <div id="middlecart">
-          <img src="Rectangle 8 (1).png" alt="sunglasses" style="border-radius: 2px; width: 158px;">
-          <div id="cartmessage"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">Beautiful Sunglasses</span></div> <br>
-          <div id="cartmessage1"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">#10, 000</span></div>
+          <img id="sunglasses" src="Rectangle 8 (1).png" alt="sunglasses">
+          <div id="cartmessage"><span id="sunglassestxt">Beautiful Sunglasses</span></div> <br>
+          <div id="cartmessage1"><span id="price2">#10, 000</span></div>
           <div id="addToCart"><button id="entry1">Add to Cart</button></div>
         </div>
       
         <div id="rightcart">
-          <img src="Rectangle 8 (2).png" alt="facecap" style="border-radius: 2px; width: 158px;">
-          <div id="cartmessage"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">Nike Baseball Cap</span></div> <br>
-          <div id="cartmessage1"><span style="font-family: 'Rosario', sans-serif; font-size: 11px; float: left; letter-spacing: 0.1rem; line-height: 15px;">#10, 000</span></div>
+          <img id="facecap" src="Rectangle 8 (2).png" alt="facecap">
+          <div id="cartmessage"><span id="captxt">Nike Baseball Cap</span></div> <br>
+          <div id="cartmessage1"><span id="price3">#10, 000</span></div>
           <div id="addToCart"><button id="entry1">Add to Cart</button></div>
         </div>
       </div>
 
       <div class="container-1">
-       <div class="mycart-items"><span style="float: left; margin-top: 10px; margin-left: 30px; font-family: 'Rosario', sans-serif; font-size: 21px; letter-spacing: 0.2rem; line-height: 15px;">My Cart</span> <span style="float: right;  margin-top: 10px; margin-right: 30px; font-family: 'Rosario', sans-serif; font-size: 21px; letter-spacing: 0.2rem; line-height: 15px;">Item(s)</span></div> 
-       <div><hr style="border: 1px solid rgba(0, 0, 0, 0.09); margin: 40px auto; transform: rotate(0.1deg); width: 95%;"></div>
-       <div><span style="font-family: 'Rosario', sans-serif; font-size: 16px; font-weight: 600; float: right; letter-spacing: 0.2rem; line-height: 15px; margin-top: 150px; margin-right: 160px;">Total Amount </span></div>
+       <div class="mycart-items"><span id="mycart">My Cart</span> <span id="item">Item(s)</span></div> 
+       <div><hr id="line"></div>
+       <div><span id="totalamount">Total Amount </span></div>
        <div id="complete"><button id="entry2">Complete</button></div>
       </div>
       <div>
-        <table id="display" align="left">
+        <table align="left">
           <tr>
           <thead>
             <th>Product</th>
@@ -83,7 +83,7 @@
             <th></th>
           </thead>
           
-          <tbody></tbody>
+          <tbody id="display"></tbody>
         </tr>
        </table>
       </div>
