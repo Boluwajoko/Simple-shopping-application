@@ -161,6 +161,107 @@ p {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+#leathershoe {
+  border-radius: 2px; 
+  width: 157px;
+}
+
+#shoetxt {
+  font-family: 'Rosario', sans-serif; 
+  font-size: 11px; 
+  float: left; 
+  letter-spacing: 0.1rem; 
+  line-height: 15px;
+}
+
+#price1 {
+  font-family: 'Rosario', sans-serif; 
+  font-size: 11px; 
+  float: left; 
+  letter-spacing: 0.1rem; 
+  line-height: 15px;
+}
+
+#sunglasses {
+  border-radius: 2px; 
+  width: 158px;
+}
+
+#sunglassestxt {
+  font-family: 'Rosario', sans-serif; 
+  font-size: 11px; 
+  float: left; 
+  letter-spacing: 0.1rem; 
+  line-height: 15px;
+}
+
+#price2 {
+  font-family: 'Rosario', sans-serif; 
+  font-size: 11px; 
+  float: left; 
+  letter-spacing: 0.1rem; 
+  line-height: 15px;
+}
+
+#facecap {
+  border-radius: 2px; 
+  width: 158px;
+}
+
+#captxt {
+  font-family: 'Rosario', sans-serif; 
+  font-size: 11px; 
+  float: left; 
+  letter-spacing: 0.1rem; 
+  line-height: 15px;
+}
+
+#price3 {
+  font-family: 'Rosario', sans-serif; 
+  font-size: 11px; 
+  float: left; 
+  letter-spacing: 0.1rem; 
+  line-height: 15px;
+}
+
+#mycart {
+  float: left; 
+  margin-top: 10px; 
+  margin-left: 30px; 
+  font-family: 'Rosario', sans-serif; 
+  font-size: 21px; 
+  letter-spacing: 0.2rem; 
+  line-height: 15px;
+}
+
+#item {
+  float: right;  
+  margin-top: 10px; 
+  margin-right: 30px; 
+  font-family: 'Rosario', sans-serif; 
+  font-size: 21px; 
+  letter-spacing: 0.2rem; 
+  line-height: 15px;
+}
+
+#line {
+  border: 1px solid rgba(0, 0, 0, 0.09); 
+  margin: 40px auto; 
+  transform: rotate(0.1deg); 
+  width: 95%;
+}
+
+#totalamount {
+  font-family: 'Rosario', sans-serif; 
+  font-size: 16px;
+  font-weight: 600; 
+  float: right; 
+  letter-spacing: 0.2rem; 
+  line-height: 15px; 
+  margin-top: 150px;
+   margin-right: 160px;
+}
+
 .input_div {
     display: flex;
     justify-content: center;
