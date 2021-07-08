@@ -3,23 +3,122 @@ const btnContinue = document.getElementById("btn-continue");
 const btnComplete = document.getElementById("btn-complete");
 const btnBack = document.getElementById("btn-back");
 const containers = document.getElementsByClassName("container");
-const addToCart = document.getElementsByClassName("cart-item-btn");
+const addToCart = document.querySelectorAll("btn-center");
+const cartTable = document.getElementsByClassName("col");
+const form = document.getElementById("login");
 
 
+// 
 
-btnContinue.addEventListener("click", function(){
+let data = [];
+const inputEl = document.getElementsByClassName("input-el");
+
+let errorEl = document.createElement("p");
+errorEl.classList.add("input-error")
+errorEl.style.color = "red";
+
+// this function creates error element at the input field where there is likely to be an error.
+function insertErrorMessage(inputField) {
+  inputField.style.border="1px solid red";
+  inputField.placeholder = `${inputField.placeholder} can not be empty!`
+  
+}
+
+function isEmpty(inputField) {
+  inputField.value
+}
+
+function formValidation() {
+  // check if the username field is empty
+  if(inputEl[0].value === ""){
+    insertErrorMessage(inputEl[0]);
+    return false;
+  }else if(inputEl[1].value === ""){
+    insertErrorMessage(inputEl[1]);
+    return false;
+  }else if(inputEl[2].value === ""){
+    insertErrorMessage(inputEl[2]);
+    return false;
+  }else{
+    return true;
+  }
+
+}
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  if(formValidation() === true){
     containers[0].classList.add("container-hide");
-  containers[1].classList.remove("container-hide");
+    containers[1].classList.remove("container-hide");
+    
+    data.push(inputEl[0].value);
+    data.push(inputEl[1].value);
+    data.push(inputEl[2].value);
+
+    inputEl[0].value = "";
+    inputEl[1].value = "";
+    inputEl[2].value = "";
+  }
+  
 });
 
 btnComplete.addEventListener("click", function(){
-      containers[1].classList.add("container-hide");
+  containers[1].classList.add("container-hide");
   containers[2].classList.remove("container-hide");
-    
+
+  document.getElementById("message").innerHTML = `<h1>thank you ${data[0]} (${data[1]}) !!!</h1>
+  <p>order received and will be shipped to ${data[2]}</p>`;
+
+  data = [];
 });
 
 btnBack.addEventListener("click", function(){
   containers[2].classList.add("container-hide");
   containers[0].classList.remove("container-hide");
-    
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let productName = "";
+// let productPrice = "";
+// addToCart.forEach(element => { 
+//   element.addEventListener("click", function() {
+//     let secondChild = element.parentNode.children[1];
+//     productName = secondChild.children[0].textContent;
+//     productPrice = secondChild.children[1].textContent;
+
+//     //adding data to table
+//     dataEl(productName,productPrice);
+
+
+//   });
+// });
+
+// // this function creates the data html element
+// function dataEl(name,price) {
+//   const newChild = document.createElement("div");
+//   newChild.classList.add = "table-data";
+//   newChild.innerHTML = `<div class="data">
+//   <p>${name}</p>
+//   <p>${price}</p>
+//   <p>1</p>
+//   </div>
+//   <button class="btn-action" id="btn-delete">X</button>`;
+//   cartTable.insertBefore(newChild, cartTable.children[cartTable.length-1]);
+// }

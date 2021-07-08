@@ -22,7 +22,7 @@ body {
 }
 /* typography */ 
  h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     letter-spacing: .1rem;
     text-transform: capitalize;
 }
@@ -64,9 +64,18 @@ button {
 
 /* button style */
 .btn {
+    color: var(--text);
+    background-color: var(--blackColor);
     padding: 5px 30px;
     border: 1px solid var(--blackColor);
     margin-top: 10px;
+}
+
+#btn-continue {
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .btn-action {
@@ -227,3 +236,6 @@ button {
     align-items: center;
 }
 
+#input-error {
+    color: red;
+}
