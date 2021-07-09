@@ -3,8 +3,8 @@ const btnContinue = document.getElementById("btn-continue");
 const btnComplete = document.getElementById("btn-complete");
 const btnBack = document.getElementById("btn-back");
 const containers = document.getElementsByClassName("container");
-const addToCart = document.querySelectorAll("btn-center");
-const cartTable = document.getElementsByClassName("col");
+const addToCart = document.querySelectorAll(".btn-center");
+let cartTable = document.querySelector(".col");
 const form = document.getElementById("login");
 
 
@@ -78,47 +78,74 @@ btnBack.addEventListener("click", function(){
 });
 
 
+function validate(form) {
+
+}
+
+
+let productName = "";
+let productPrice = "";
+addToCart.forEach(element => { 
+  element.addEventListener("click", function() {
+    let secondChild = element.parentNode.children[1];
+    productName = secondChild.children[0].textContent;
+    productPrice = secondChild.children[1].textContent;
+
+    //adding data to table
+    dataEl(productName,productPrice);
+  })
+});
 
 
 
 
 
+// this function creates the data html element
+function dataEl(name,price) {
+  let newChild = "";
+  newChild = `<div class = "table-data" > <div class="data">
+  <p>${name}</p>
+  <p>${price}</p>
+  <p>1</p>
+  </div>
+  <button class="btn-action" id="btn-delete">X</button> </div>`;
+  let tableResult = cartTable.children[cartTable.children.length - 2];
+  tableResult.insertAdjacentHTML('beforebegin', newChild);
+
+  
+  // attach event to the delete button if it exists
+  // if(btnDel = document.querySelectorAll("#btn-delete")) {
+  //   btnDel.forEach(element => {
+  //     element.addEventListener("click", function() {
+  //       element.parentElement.remove();
+  //     })
+  //   })
+  // }
+
+  function deleteItem() {
+    btnDel = document.querySelectorAll("#btn-delete");
+    btnDel.forEach(element => {
+      element.addEventListener("click", function() {
+        element.parentElement.remove();
+        cartItemCount--;
+      })
+    })
+  } 
+  let productItemNumber = document.getElementById("product-count");
+  // item count function 
+  if(document.querySelectorAll(".table-data")) {
+    const item = document.querySelectorAll(".table-data");
+    cartItemCount = item.length;
+    
+    productItemNumber.textContent = cartItemCount;
+  }
+
+  if(document.querySelectorAll(".table-data")) {
+  }
+
+}
 
 
 
 
 
-
-
-
-
-
-
-
-// let productName = "";
-// let productPrice = "";
-// addToCart.forEach(element => { 
-//   element.addEventListener("click", function() {
-//     let secondChild = element.parentNode.children[1];
-//     productName = secondChild.children[0].textContent;
-//     productPrice = secondChild.children[1].textContent;
-
-//     //adding data to table
-//     dataEl(productName,productPrice);
-
-
-//   });
-// });
-
-// // this function creates the data html element
-// function dataEl(name,price) {
-//   const newChild = document.createElement("div");
-//   newChild.classList.add = "table-data";
-//   newChild.innerHTML = `<div class="data">
-//   <p>${name}</p>
-//   <p>${price}</p>
-//   <p>1</p>
-//   </div>
-//   <button class="btn-action" id="btn-delete">X</button>`;
-//   cartTable.insertBefore(newChild, cartTable.children[cartTable.length-1]);
-// }
