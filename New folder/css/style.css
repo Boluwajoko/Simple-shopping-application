@@ -113,11 +113,14 @@ button {
 
 }
 
+.form-container {
+    margin-bottom: 20px;
+}
+
 .input-el {
     display: flex;
     justify-content: stretch;
     align-items: center;
-    margin-bottom: 20px;
     width: 250px;
     height: 30px;
     padding: 10px;
@@ -236,6 +239,13 @@ button {
     align-items: center;
 }
 
-#input-error {
+.error-mssg {
     color: red;
+}
+.input-error {
+    border: 1px solid red;
+}
+
+.input-success {
+    border: 1px solid green;
 }
