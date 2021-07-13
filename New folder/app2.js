@@ -150,7 +150,8 @@ btnComplete.addEventListener("click", function(){
     // updates the success page
     document.getElementById("message").innerHTML = `<h1>thank you ${userData[0]} (${userData[1]}) !!!</h1>
     <p>order received and will be shipped to ${userData[2]}</p>`;
-    
+    document.querySelectorAll(".table-data").forEach(element=>{element.parentElement.removeChild(element)})
+    productCartCount.textContent = document.querySelectorAll(".table-data").length;
     containers[1].classList.add("container-hide");
     containers[2].classList.remove("container-hide");
 })
