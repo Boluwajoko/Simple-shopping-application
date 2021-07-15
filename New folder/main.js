@@ -7,6 +7,9 @@ const addToCart = document.querySelectorAll(".btn-center");
 let cartTable = document.querySelector(".col");
 const form = document.getElementById("login");
 
+// variable to hold the name and price of your target product
+let productCartCount = document.getElementById("product-count");
+
 // this array stores user data
 let userData = [];
 
@@ -39,7 +42,6 @@ function raiseSuccess(inputField) {
 // The first btn; continue button listens for click event and tries to validate the form.
 form.addEventListener("submit", function(event) {
     event.preventDefault();
-    let value = false;
 
     let nameValue = inputName.value.trim();
     let addrValue = inputAddr.value.trim();
@@ -97,40 +99,102 @@ form.addEventListener("submit", function(event) {
 --------------------------------------------------------------------------------------------------------------------*/
 
 // Second page (cart section) 
-// variable to hold the name and price of your target product
-let productName = "";
-let productPrice = "";
-let productCartCount = document.getElementById("product-count");
-let numberOfProduct = 0;
+
 /* event listener that listens to `add to cart` click event and adds the
 product to the cart table */
 
-addToCart.forEach(element => { 
-  element.addEventListener("click", function() {
-    let secondChild = element.parentNode.children[1];
-    productName = secondChild.children[0].textContent;
-    productPrice = secondChild.children[1].textContent;
+// addToCart.forEach(element => { 
+//   element.addEventListener("click", function() {
+//     let secondChild = element.parentNode.children[1];
+//     productName = secondChild.children[0].textContent;
+//     productPrice = secondChild.children[1].textContent;
 
-    //adding data to table
-    dataEl(productName,productPrice)
-    delItemFromCart();
-    productCartCount.textContent = document.querySelectorAll(".table-data").length;
-  })
-});
+//     //adding data to table
+//     dataEl(productName,productPrice)
+//     delItemFromCart();
+//     productCartCount.textContent = document.querySelectorAll(".table-data").length;
+//   })
+// });
+
+for (let i =0; i<addToCart.length; i++) {
+    addToCart[i].addEventListener("click", function(){
+        delItemFromCart();
+        itemNumber(products[i]);
+        total(products[i]);
+        dataEl();
+        // updating it to the frontend
+        document.getElementById("amount").textContent = localStorage.getItem("Amount");
+    })
+}
+
+// function to count cart
+function itemNumber(product) { 
+    let numberOfProduct = localStorage.getItem("Product-Count");
+    // converting numberOfProducts to number
+    numberOfProduct = parseInt(numberOfProduct);
+
+    if(numberOfProduct){
+        localStorage.setItem("Product-Count", numberOfProduct + 1);
+        productCartCount.textContent = numberOfProduct + 1;
+    }else {
+        localStorage.setItem("Product-Count", 1);
+        productCartCount.textContent = 1;
+    }
+
+    itemInCart(product);
+}
+
+// function creates the product-qty localstorage
+function itemInCart(product) {
+    let productObj = localStorage.getItem("Product");
+    productObj = JSON.parse(productObj);
+    
+
+    if(productObj) {
+        if(productObj[product.name] === undefined){
+            productObj = {
+                ...productObj,
+                [product.name]: product,
+            }
+        }
+        productObj[product.name].quantity += 1;
+    }else{
+        product.quantity = 1;
+        productObj = {
+            [product.name]: product,
+        };
+    }
+    
+    localStorage.setItem("Product", JSON.stringify(productObj));
+}
+
 
 /* function that creates the DOM element for the product, price and quantity
 in the cart table */
-function dataEl(name,price) {
-    let newChild = "";
-    newChild = `<div class = "table-data" > <div class="data">
-    <p>${name}</p>
-    <p id="price">${price}</p>
-    <p>1</p>
-    </div>
-    <button class="btn-action" id="btn-delete">X</button> </div>`;
-    let tableResult = cartTable.children[cartTable.children.length - 2];
-    tableResult.insertAdjacentHTML('beforebegin', newChild);
+function dataEl() {
+    let productNum = localStorage.getItem("Product");
+    let amount = localStorage.getItem("amount");
+    let dataContainer = document.querySelector(".table-data-container")
 
+    productNum = JSON.parse(productNum);
+    
+    if(productNum && dataContainer) {
+        dataContainer.innerHTML = "";
+        Object.values(productNum).map(items => {
+            dataContainer.innerHTML += `
+            <div class= "data">
+                <h2 class="product-name">${items.name}</h2>
+                <h3 id="price">${items.price}</h3>
+                <div id="quantity-container">
+                    <button id="decrease">-</button>
+                    <div>${items.quantity}</div>
+                    <button id="increase">+</button>
+                </div>
+                <button class="btn-action" id="btn-delete">X</button>
+            </div>
+            `
+        })
+    }
 }
 
 // function to delete product from cart
@@ -139,10 +203,23 @@ function delItemFromCart(){
     delBtn.forEach(element=>{
         element.addEventListener("click",function(){
             element.parentElement.remove();
-            productCartCount.textContent = document.querySelectorAll(".table-data").length;
+            // productCartCoun.textContent = document.querySelectorAll(".table-data").length;
         })
     })  
 
+}
+
+// function to calculate the total
+function total(product){
+    let amount = localStorage.getItem("Amount");
+    if(amount){
+        amount = parseInt(amount);
+        localStorage.setItem("Amount", amount + product.price);
+    }else{
+        localStorage.setItem("Amount", product.price);
+    }
+
+    
 }
 
 // seecond button 
@@ -164,17 +241,22 @@ btnBack.addEventListener("click", function(){
     userData=[];
 })
 
+
+
+ 
+
+
 // Product array
 let products = [
     {
         name: 'elegant studded shoe',
-        price: 10000,
+        price: 9450,
         quantity: 0,
     },
 
     {
         name: 'beautiful sunglasses',
-        price: 10000,
+        price: 5099,
         quantity: 0,
     },
     

@@ -195,16 +195,16 @@ button {
     padding: 5px 0px;
 }
 .table-label {
-    margin-top: 15px;
+    margin: 15px 0px;
 }
 
 .table-data {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
-    margin-top: 15px;
+    margin: 10px 0px;
 }
-
+ 
 .table-result,
 .btn-confirm {
     display: flex;
@@ -221,17 +221,9 @@ button {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    margin: 15px 0px;
 }
-
-.data p:nth-child(2) {
-    margin-left: 180px;
-}
-
-.data p:nth-child(3) {
-    margin-left: 240px;
-}
-
-
 
 .success {
     display: flex;
@@ -248,4 +240,17 @@ button {
 
 .input-success {
     border: 1px solid green;
+}
+
+#quantity-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#quantity-container button {
+    padding: 2px 5px;
+    border: none;
 }
