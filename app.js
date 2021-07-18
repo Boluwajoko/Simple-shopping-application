@@ -111,8 +111,8 @@ addToCart.forEach(element => {
     let secondChild = element.parentNode.children[1];
     productName = secondChild.children[0].textContent;
     productPrice = secondChild.children[1].textContent;
-    let formattedPricce = productPrice.replace('#','').replace(',','');
-    let priceInNumber = parseFloat(formattedPricce);
+    let formattedPrice = productPrice.replace('#','').replace(',','');
+    let priceInNumber = parseFloat(formattedPrice);
     let productId = secondChild.children[2].getAttribute('data-id');
 
     const product = {
@@ -124,6 +124,9 @@ addToCart.forEach(element => {
     }
 
     addProductToStorage(product);
+    updateCart();
+    updateSubTotal();
+
     
 
     // console.log(cartItems);
@@ -131,34 +134,45 @@ addToCart.forEach(element => {
 
     //adding data to table
     // dataEl(productName,productPrice)
-     delItemFromCart();
+    //  delItemFromCart();
+     addEventListenerToDeleteBtn();
     productCartCount.textContent = document.querySelectorAll(".table-data").length;
   });
   
 
 });
 
+ 
+
 function updateCart(){
     let cartItemsEl = document.getElementById("cartItems");
     console.log(cartItemsEl);
     cartItemsEl.innerHTML = "";
+    console.log(cartItemsEl);
+    console.log(cartItems);
+
     cartItems.forEach(function(item){
-        addItensToCart(item, cartItemsEl);
+        addItemsToCart(item, cartItemsEl);
     });
+
 }
 
 function addProductToStorage(product){
     if(cartItems.length !== 0){
 
-        let found = cartItems.some(item => item.id === product.productId);
+        console.log(cartItems);
+        console.log(product);
+        let found = cartItems.some(item => item.id === product.id);
 
+        console.log(found);
 
         if(!found){
             cartItems.push(product);
         }else{
             cartItems.forEach(function(item){
-                if(item.id === product.productId){
-                    item.quantity += 1;
+                if(item.id === product.id){
+                    item.quantity += product.quantity;
+                    item.price += product.price;
                 }
         
             });
@@ -170,29 +184,19 @@ function addProductToStorage(product){
     
 // let itemTOLS = JSON.stringify(cartItems);
 // localStorage.setItem('shoppingCart',itemTOLS);
-updateCart();
+// document.getElementById("cartItems").innerHTML = "";
 }
 
 /* function that creates the DOM element for the product, price and quantity
 in the cart table */
-function addItensToCart(addedProduct, cartItemsEl) {
-    // let newChild = "";
-    // newChild = `<div class = "table-data" > <div class="data">
-    // <p>${addedProduct.name}</p>
-    // <p id="price">${addedProduct.price}</p>
-    // <p>${addedProduct.quantity}</p>
-    // <span data-id="${addedProduct.id}"></span>
-    // </div>
-    // <button class="btn-action" id="btn-delete">X</button> </div>`;
-    // let tableResult = cartTable.children[cartTable.children.length - 2];
-    // tableResult.insertAdjacentHTML('beforebegin', newChild);
+function addItemsToCart(addedProduct, cartItemsEl) {
 
     let trElement = `
     <tr>
     <td>${addedProduct.name}</td>
     <td>${addedProduct.price}</td>
     <td>${addedProduct.quantity}</td>
-    <td><button class="btn-action" data-id="${addedProduct.id}" id="btn-delete">X</button></td>
+    <td><button class="btn-action" data-id="${addedProduct.id}">X</button></td>
     </tr>
     `;
 
@@ -202,22 +206,60 @@ function addItensToCart(addedProduct, cartItemsEl) {
 }
 
 // function to delete product from cart
-function delItemFromCart(){
-    const delBtn = document.querySelectorAll("#btn-delete");
-    delBtn.forEach(element=>{
-        element.addEventListener("click",function(){
-            element.parentElement.remove();
-            productCartCount.textContent = document.querySelectorAll(".table-data").length;
-        })
-    })  
+function addEventListenerToDeleteBtn(){
+    console.log('i ran');
+   const delBtns = document.getElementsByClassName("btn-action");
+   console.log(delBtns);
+    
+   for(let i = 0; i < delBtns.length; i++){
+    console.log('event added');
+    delBtns[i].addEventListener("click",function(){
+        console.log('clicked');
+        // element.parentElement.parentElement.remove();
 
+        var productId = delBtns[i].getAttribute("data-id");
+        cartItems.forEach((item,index) =>{
+            if(item.id === productId){
+                cartItems.splice(index,1);
+            }
+        });
+        updateCart();
+        updateSubTotal();
+        addEventListenerToDeleteBtn();
+
+        
+    })
+   }
+    
 }
+
+updateSubTotal();
+
+//to update subTotal of the prices of items in the cart
+function updateSubTotal() {
+
+let subTotal = 0;
+cartItems.forEach(function(item){
+    subTotal = subTotal + item.price;
+    console.log(subTotal);
+});
+  document.getElementById("val").innerHTML = "Total = N" + subTotal.toFixed(2);
+}
+
 
 // seecond button 
 btnComplete.addEventListener("click", function(){
-    // updates the success page
+    // defining subTotal so it can be used as a placeholder
+     let subTotal = 0;
+        cartItems.forEach(function(item){
+        subTotal = subTotal + item.price;
+    });
+
+    // updates success
+
     document.getElementById("message").innerHTML = `<h1>thank you ${userData[0]} (${userData[1]}) !!!</h1>
-    <p>order received and will be shipped to ${userData[2]}</p>`;
+    <p>order received and will be shipped to ${userData[2]}</p>
+    <p>Total amount spent on order is: ${subTotal} </p>`;
     document.querySelectorAll(".table-data").forEach(element=>{element.parentElement.removeChild(element)})
     productCartCount.textContent = document.querySelectorAll(".table-data").length;
     containers[1].classList.add("container-hide");

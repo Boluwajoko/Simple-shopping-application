@@ -25,6 +25,7 @@ body {
     font-size: 1.2rem;
     letter-spacing: .1rem;
     text-transform: capitalize;
+    text-align: center;
 }
 
 .title p {
@@ -44,6 +45,7 @@ p {
     text-transform: capitalize;
     letter-spacing: .1rem;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 .input-el::placeholder {
@@ -183,11 +185,11 @@ button {
     border-radius: 10px;
 }
 
-.table-head,
-.table-label {
+.table-head {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-weight: 700;
 }
 
 .table-head {
@@ -202,7 +204,7 @@ table {
   color: black;
 }
 
-table, th, td {
+table, th {
   border-left: none;
   border-right: none;
   padding-top: 2px;
@@ -211,35 +213,36 @@ table, th, td {
   text-align: center;
   /* margin: 0% auto; */
   margin-top: 2px;
-}
-
-tbody {
-  border-left: none;
-  border-right: none;
-  padding-top: 2px;
-  padding-left: 75px;
-  padding-right: 75px;
-  text-align: center;
-  /* margin: 0% auto; */
-  margin-top: 2px;
-}
-
-th {
-  font-size: 1.0rem;
-}
-
-td {
   font-size: 16px;
   color: black;
   font-weight: 300;
 }
+ 
+ td {
+  border-left: none;
+  border-right: none;
+  padding-top: 20px;
+  padding-left: 75px;
+  padding-right: 75px;
+  text-align: center;
+}
 
-.table-data {
+th {
+  font-size: 1.0rem;
+  font-weight: bold;
+}
+
+td {
+  margin-top: 10px;
+}
+
+
+/* .table-data {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
     margin: 10px 0px;
-}
+} */ 
 
 .table-result {
     margin-top: 50px;
@@ -247,6 +250,11 @@ td {
     justify-content: flex-end;
     align-items: center;
 }
+
+#val {
+  font-size: .7rem;
+}
+
 .btn-confirm {
     display: flex;
     justify-content: flex-end;
