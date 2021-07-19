@@ -9,7 +9,42 @@ const form = document.getElementById("login");
 
 // this array stores user data
 let userData = [];
+
+//this array stores cart items
 let cartItems = [];
+let shopProducts = [
+    {
+        nameValue: "Elegant Studded Shoe",
+        pricePerUnit: 10000,
+        id: "product1",
+        imageSrc: "studded_shoe.png",
+        quantityInStore: 100
+    },
+
+    {
+        nameValue: "Beautiful Sunglasses",
+        pricePerUnit: 10000,
+        id: "product2",
+        imageSrc: "beautiful_sunglasses.png",
+        quantityInStore: 50
+    },
+
+    {
+        nameValue: "Nike facecap",
+        pricePerUnit: 10000,
+        id: "product3",
+        imageSrc: "nike_facecap.png",
+        quantityInStore: 100
+    },
+    
+    {
+        nameValue: "Nike facecap",
+        pricePerUnit: 10000,
+        id: "product3",
+        imageSrc: "nike_facecap.png",
+        quantityInStore: 100
+    }
+];
 
 // form field variable declaration
 const inputName = document.getElementById("input-name");
@@ -136,14 +171,23 @@ addToCart.forEach(element => {
     // dataEl(productName,productPrice)
     //  delItemFromCart();
      addEventListenerToDeleteBtn();
-    productCartCount.textContent = document.querySelectorAll(".table-data").length;
+
   });
   
 
 });
 
- 
+//to update product display
+function updateProductDisplay() {
+    let displayEl = document.getElementById("display-row");
+    displayEl.innerHTML = "";
 
+    shopProducts.forEach(function(itemsInProductStorage){
+        displayProductDetails(itemsInProductStorage, displayEl);
+    });
+}
+ 
+//to update cart
 function updateCart(){
     let cartItemsEl = document.getElementById("cartItems");
     console.log(cartItemsEl);
@@ -151,12 +195,13 @@ function updateCart(){
     console.log(cartItemsEl);
     console.log(cartItems);
 
-    cartItems.forEach(function(item){
-        addItemsToCart(item, cartItemsEl);
+    cartItems.forEach(function(productInCartStorage){
+        addItemsToCart(productInCartStorage, cartItemsEl);
     });
 
 }
 
+//add product to cartItems array
 function addProductToStorage(product){
     if(cartItems.length !== 0){
 
@@ -187,16 +232,48 @@ function addProductToStorage(product){
 // document.getElementById("cartItems").innerHTML = "";
 }
 
+//to display the product details on the catalogue
+function displayProductDetails (itemsInProductStorage, displayEl) {
+
+    let divEl = `
+    <div class= "cart">
+        <div class="cart-item">
+            <div class="cart-item-img">
+                <img src="${itemsInProductStorage.imageSrc}" alt="studded shoe">
+            </div>
+            <div class="cart-item-desc">
+                <p>${itemsInProductStorage.nameValue}</p>
+                <p>${itemsInProductStorage.pricePerUnit}</p>
+                <span data-Id="${itemsInProductStorage.id}"></span>
+
+            </div>
+            <div class="btn-center">
+                <button class="cart-item-btn">add to cart</button>
+            </div>
+        </div>
+    </div>
+    `;
+
+    displayEl.insertAdjacentHTML('beforeend', divEl);
+}
+
+
 /* function that creates the DOM element for the product, price and quantity
 in the cart table */
-function addItemsToCart(addedProduct, cartItemsEl) {
+function addItemsToCart(productInCartStorage, cartItemsEl) {
 
     let trElement = `
     <tr>
-    <td>${addedProduct.name}</td>
-    <td>${addedProduct.price}</td>
-    <td>${addedProduct.quantity}</td>
-    <td><button class="btn-action" data-id="${addedProduct.id}">X</button></td>
+    <td>${productInCartStorage.name}</td>
+    <td>${productInCartStorage.price}</td>
+    <td> 
+    <div id = quantity-btn>
+    <button id = "decrease">-</button>
+    ${productInCartStorage.quantity}
+    <button id = "increase">+</button>
+    </div> 
+    </td>
+    <td><button class="btn-action" data-id="${productInCartStorage.id}">X</button></td>
     </tr>
     `;
 
@@ -260,8 +337,8 @@ btnComplete.addEventListener("click", function(){
     document.getElementById("message").innerHTML = `<h1>thank you ${userData[0]} (${userData[1]}) !!!</h1>
     <p>order received and will be shipped to ${userData[2]}</p>
     <p>Total amount spent on order is: ${subTotal} </p>`;
-    document.querySelectorAll(".table-data").forEach(element=>{element.parentElement.removeChild(element)})
-    productCartCount.textContent = document.querySelectorAll(".table-data").length;
+    // document.querySelectorAll(".table-data").forEach(element=>{element.parentElement.removeChild(element)})
+    // productCartCount.textContent = document.querySelectorAll(".table-data").length;
     containers[1].classList.add("container-hide");
     containers[2].classList.remove("container-hide");
 })
@@ -274,6 +351,8 @@ btnBack.addEventListener("click", function(){
     userData=[];
 })
 
+
+updateProductDisplay();
 // Product array
 let products = [
     {
