@@ -3,7 +3,6 @@ const btnContinue = document.getElementById("btn-continue");
 const btnComplete = document.getElementById("btn-complete");
 const btnBack = document.getElementById("btn-back");
 const containers = document.getElementsByClassName("container");
-const addToCart = document.querySelectorAll(".btn-center");
 let cartTable = document.querySelector(".col");
 const form = document.getElementById("login");
 
@@ -36,7 +35,7 @@ let shopProducts = [
         imageSrc: "nike_facecap.png",
         quantityInStore: 100
     },
-    
+
     {
         nameValue: "Nike facecap",
         pricePerUnit: 10000,
@@ -141,41 +140,6 @@ let numberOfProduct = 0;
 /* event listener that listens to `add to cart` click event and adds the
 product to the cart table */
 
-addToCart.forEach(element => { 
-  element.addEventListener("click", function() {
-    let secondChild = element.parentNode.children[1];
-    productName = secondChild.children[0].textContent;
-    productPrice = secondChild.children[1].textContent;
-    let formattedPrice = productPrice.replace('#','').replace(',','');
-    let priceInNumber = parseFloat(formattedPrice);
-    let productId = secondChild.children[2].getAttribute('data-id');
-
-    const product = {
-        'name': productName,
-        'price': priceInNumber,
-        'id': productId,
-        'quantity' : 1
-
-    }
-
-    addProductToStorage(product);
-    updateCart();
-    updateSubTotal();
-
-    
-
-    // console.log(cartItems);
-
-
-    //adding data to table
-    // dataEl(productName,productPrice)
-    //  delItemFromCart();
-     addEventListenerToDeleteBtn();
-
-  });
-  
-
-});
 
 //to update product display
 function updateProductDisplay() {
@@ -185,6 +149,45 @@ function updateProductDisplay() {
     shopProducts.forEach(function(itemsInProductStorage){
         displayProductDetails(itemsInProductStorage, displayEl);
     });
+
+    const addToCart = document.querySelectorAll(".btn-center");
+
+
+    addToCart.forEach(element => { 
+        element.addEventListener("click", function() {
+          let secondChild = element.parentNode.children[1];
+          productName = secondChild.children[0].textContent;
+          productPrice = secondChild.children[1].textContent;
+          let formattedPrice = productPrice.replace('#','').replace(',','');
+          let priceInNumber = parseFloat(formattedPrice);
+          let productId = secondChild.children[2].getAttribute('data-id');
+      
+          const product = {
+              'name': productName,
+              'price': priceInNumber,
+              'id': productId,
+              'quantity' : 1
+      
+          }
+      
+          addProductToStorage(product);
+          updateCart();
+          updateSubTotal();
+      
+          
+      
+          // console.log(cartItems);
+      
+      
+          //adding data to table
+          // dataEl(productName,productPrice)
+          //  delItemFromCart();
+           addEventListenerToDeleteBtn();
+      
+        });
+        
+      
+      });
 }
  
 //to update cart
