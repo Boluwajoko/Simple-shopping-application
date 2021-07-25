@@ -356,9 +356,10 @@ function incrementQty() {
     // console.log(productid);
 
     cartItems.forEach(function(item, index) {
-        if(item.id === productid){
-            item.quantity += productid.quantity;
-            item.price += productid.price;
+        if(item.id === shopProducts.id){
+            console.log(shopProducts.id);
+            item.quantityInStore += shopProducts.quantityInStore;
+            item.pricePerUnit += shopProducts.pricePerUnit;
         }
     })
 
@@ -373,14 +374,14 @@ decrementButton.addEventListener("click", decrementQty);
 
 function decrementQty() {
     // cartItems.forEach(function(item, index){
-    shopProducts.forEach(function(item, index){
-        if(item.id === shopProducts.id) {
-            item.id += shopProducts.
-        }
-    })
+    // shopProducts.forEach(function(item, index){
+    //     if(item.id === shopProducts.id) {
+    //         item.id += shopProducts.
+        
+    // })
     // })
 
-    setCartItemsLS();
+    setCartItemsLS(); 
     updateSubTotal();
     updateProductDisplay();
 }
