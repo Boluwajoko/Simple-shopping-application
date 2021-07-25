@@ -9,8 +9,32 @@ const form = document.getElementById("login");
 // this array stores user data
 let userData = [];
 
-//this array stores cart items
-let cartItems = [];
+//the cartItems array stores product details
+// let cartItems = [];
+let cartItems = getCartItemsinLS();
+
+updateCart();
+
+//using localStorage
+function getCartItemsinLS(){
+    let cartItemsLS = localStorage.getItem("cartItems");
+    console.log(cartItemsLS);
+
+    let parsed = JSON.parse(cartItemsLS);
+
+    if(parsed === null || parsed === undefined) {
+        return [];
+    } else {
+        return parsed;
+    }
+
+}
+
+function setCartItemsLS () {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}
+// localStorage.setItem("cartDisplay", JSON.stringify(cartItems));
+
 let shopProducts = [
     {
         nameValue: "Elegant Studded Shoe",
@@ -44,6 +68,10 @@ let shopProducts = [
         quantityInStore: 100
     }
 ];
+
+
+// localStorage.clear();
+
 
 // form field variable declaration
 const inputName = document.getElementById("input-name");
@@ -136,10 +164,14 @@ form.addEventListener("submit", function(event) {
 let productName = "";
 let productPrice = "";
 let productCartCount = document.getElementById("product-count");
+console.log(productCartCount);
 let numberOfProduct = 0;
 /* event listener that listens to `add to cart` click event and adds the
 product to the cart table */
 
+// function addItemsToLocalStorage() {
+//     localStorage.setItem('cartItems', JSON.stringify(product));
+// }
 
 //to update product display on catalogue
 function updateProductDisplay() {
@@ -171,11 +203,13 @@ function updateProductDisplay() {
         }
       
         addProductToStorage(product);
+        setCartItemsLS();
         updateCart();
         updateSubTotal();
       
     
         delItemsFromCart();
+        console.log(cartItems); 
       
         });
         
@@ -193,6 +227,7 @@ function updateCart(){
 
     cartItems.forEach(function(productInCartStorage){
         addItemsToCart(productInCartStorage, cartItemsEl);
+        
     });
 
     delItemsFromCart();
@@ -255,17 +290,11 @@ function displayProductDetails (itemsInProductStorage, displayEl) {
 }
 
 
-/* function that creates the DOM element for the product, price and quantity
-in the cart table */
-var incrementButton = document.getElementsByClassName("inc-button");
-var decrementButton = document.getElementsByClassName("dec-button");
-console.log(incrementButton);
-console.log(decrementButton);
-
-// for(i = 0; i < incrementButton.length; i++) {
-//     var button = incrementButton;
-//     console.log(button);
-// }
+/* to increment and decrement product quanitity on cart */
+// const incrementButton = document.getElementsByClassName("inc-button");
+// const decrementButton = document.getElementsByClassName("dec-button");
+// console.log(incrementButton);
+// console.log(decrementButton);
    
 
 
@@ -276,10 +305,11 @@ function addItemsToCart(productInCartStorage, cartItemsEl) {
     <td>${productInCartStorage.name}</td>
     <td>${productInCartStorage.price}</td>
     <td> 
-    <button class = "dec-button">-</button>
-    <input type = "text" value = "${productInCartStorage.quantity}" class = "input-field">
-    <button class = "inc-button">+</button>
-    </td>
+    <div id = "quantity-container">
+    <button id = "dec-button">-</button>
+    <div>${productInCartStorage.quantity}</div>
+    <button id = "inc-button">+</button>
+    </div>
     <td><button class="btn-action" data-id="${productInCartStorage.id}">X</button></td>
     </tr>
     `;
@@ -298,14 +328,61 @@ function delItemsFromCart(){
             element.parentElement.parentElement.remove();
             console.log( element.parentElement.parentElement);
 
-            // productCartCoun.textContent = document.querySelectorAll(".table-data").length;
+            //to certify that product-id exist in the cartItems array
+            let productid = element.getAttribute("data-id")
+            console.log(productid);
+
+            cartItems.forEach(function(item, index){
+                if (item.id === productid) {
+                    cartItems.splice([index, 1]);
+                }
+            })
+
+            setCartItemsLS();
+            // updateCart();
+            updateSubTotal();
+            updateProductDisplay();
         })
     });  
-    
-    // updateSubTotal();
-    // updateCart();
-    // updateProductDisplay();
+}
 
+//to increment product Qty
+const incrementButton = document.getElementById("inc-button");
+console.log(incrementButton);
+incrementButton.addEventListener("click", incrementQty);
+
+function incrementQty() {
+    // let productid = document.getAttribute("data-id")
+    // console.log(productid);
+
+    cartItems.forEach(function(item, index) {
+        if(item.id === productid){
+            item.quantity += productid.quantity;
+            item.price += productid.price;
+        }
+    })
+
+    setCartItemsLS();
+    updateSubTotal();
+    updateProductDisplay();
+}
+
+const decrementButton = document.getElementById("dec-button");
+console.log(decrementButton);
+decrementButton.addEventListener("click", decrementQty);
+
+function decrementQty() {
+    // cartItems.forEach(function(item, index){
+    shopProducts.forEach(function(item, index){
+        if(item.id === shopProducts.id) {
+            item.id += shopProducts.
+        }
+    })
+    // })
+
+    setCartItemsLS();
+    updateSubTotal();
+    updateProductDisplay();
 }
 
 
@@ -330,7 +407,8 @@ btnComplete.addEventListener("click", function(){
     });
 
     // updates success
-    document.getElementById("message").innerHTML = `<h1>thank you ${userData[0]} (${userData[1]}) !!!</h1>
+
+    document.getElementById("message").innerHTML = `<h1>Thank you ${userData[0]} (${userData[1]}) !!!</h1>
     <p>order received and will be shipped to ${userData[2]}</p>
     <p>Total amount spent on order is: ${subTotal} </p>`;
     // document.querySelectorAll(".table-data").forEach(element=>{element.parentElement.removeChild(element)})
